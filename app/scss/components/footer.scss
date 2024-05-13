@@ -1,0 +1,25 @@
+@use '../util/theme.scss' as *;
+@use '../util/breakpoints.scss' as *;
+
+.footer{
+    color: var(--clr-text-footer);
+    background-color: var(--clr-bg-footer);
+
+    &__content{
+        background-color: var(--clr-bg-footer);
+    }
+
+    &__copyright{
+        background-color: var(--clr-bg-footer-2);
+        color: var(--clr-title);
+        padding-block: 1rem;
+        display: grid;
+        place-content: center;
+
+        &--text{
+            font-size: .85rem;
+            text-align: center;
+        }
+
+    }
+}

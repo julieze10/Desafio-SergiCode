@@ -1,0 +1,167 @@
+@use '../util/mixins.scss' as *;
+@use '../util/breakpoints.scss' as *;
+@use '../util/theme.scss' as *;
+
+header{
+    position: relative;
+    height: 70vh;
+    background-color: var(--clr-bg-header);
+    background-size: cover;
+    background-attachment: fixed;
+
+    @include mq-down(small){
+        height: 50vh;
+    }
+
+    .topbar{
+        padding-block: 1rem;
+
+        .container{
+            @include flex(space-between, center, row);
+
+            .topbar-logo{
+                text-decoration: none;
+
+                h1{
+                    color: var(--clr-text-header);
+                    font-size: 1.5rem;
+                }
+            }
+
+            .topbar-right{
+                @include flex(space-between, center, row);
+                gap: 1rem;
+
+                .social-button{
+                    @include flex(center, center, row);
+                    text-decoration: none;
+                    background-color: var(--clr-social-1);
+                    border-radius: 50%;
+                    height: 30px;
+                    width: 30px;
+                    transition: all .7s ease;
+        
+                    i{
+                        color: var(--clr-social-3);
+                    }
+    
+                    &:hover{
+                        background-color: var(--clr-social-2);
+                        
+                        i{
+                            color: var(--clr-social-1);
+                        }
+                    }
+                }
+
+                .theme-mode-toggle{
+                    .checkbox{
+                        opacity: 0;
+                        position: absolute;
+
+                        &:checked + .label .ball{
+                            transform: translateX(20px);
+                        }
+                    }
+                      
+                    .label{
+                        @include flex(space-between, center, row);
+                        width: 54px;
+                        height: 30px;
+                        padding: .125rem .5rem;
+                        background-color: var(--clr-social-1);
+                        border-radius: 50px;
+                        position: relative;
+
+                        i{
+                            font-size: 15px;
+                        }
+
+                        .ball{
+                            width: 18px;
+                            height: 18px;
+                            background-color: var(--clr-text-header);
+                            position: absolute;
+                            border-radius: 50%;
+                            transition: transform 0.2s linear;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .banner{
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: calc(100% - 225px);
+
+        @include mq-down(small){
+            height: calc(100% - 118px);
+        }
+
+        &__content{
+            width: min(100% - 5rem, 500px);
+            margin-inline: auto;
+
+            &--text{
+                padding-bottom: 1rem;
+                text-align: center;
+
+                p{
+                    color: var(--clr-title);
+                    font-size: 1.25rem;
+                }
+            }
+
+            &--search{
+                position: relative;
+
+                input{
+                    width: 100%;
+                    border: none;
+                    border-radius: 3rem;
+                    height: 3rem;
+                    padding-inline: 3rem;
+
+                    &:focus{
+                        border: none;
+                    }
+                }
+
+                .fa-magnifying-glass{
+                    position: absolute;
+                    top: 30%;
+                    color: var(--clr-bg-header);
+                    left: 1rem;
+                }
+
+                .fa-xmark{
+                    position: absolute;
+                    top: 33%;
+                    color: var(--clr-bg-header);
+                    right: 2rem;
+                    cursor: pointer;
+                }
+            }
+
+            &--error{
+                color: red;
+            }
+        }
+    }
+
+    .wave{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        overflow: hidden;
+        height: 150px;
+
+        @include mq-down(xsmall){
+            height: 50px;
+        }
+    }
+}

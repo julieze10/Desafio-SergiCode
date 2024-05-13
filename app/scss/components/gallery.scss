@@ -1,0 +1,94 @@
+@use '../util/theme.scss' as *;
+@use '../util/mixins.scss' as *;
+@use '../util/breakpoints.scss' as *;
+
+.gallery{
+
+    h2{
+        color: var(--clr-h2-gallery);
+    }
+
+    &__container{
+        display: grid;
+        grid-template-columns: repeat(4, 300px);
+        gap: 1rem;
+        place-content: center;
+
+        @include mq-down(large){
+            grid-template-columns: repeat(3,300px);
+        }
+
+        @include mq-down(medium){
+            grid-template-columns: repeat(3, 250px);
+        }
+
+        @include mq-down(small){
+            grid-template-columns: repeat(2,300px);
+        }
+
+        @include mq-down(xsmall){
+            grid-template-columns: 300px;
+        }
+    }
+
+    &__item{
+        height: 300px;
+        width: 300px;
+        border-radius: .25rem;
+        overflow: hidden;
+        background-color: var(--clr-bg-gallery);
+        @include flex(center, center, row);
+
+        @include mq-down(medium){
+            height: 250px;
+            width: 250px;
+        }
+
+        @include mq-down(small){
+            height: 300px;
+            width: 300px;
+        }
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        h2{
+            color: var(--clr-text-gallery);
+        }
+
+        img{
+            @include wh-100;
+            object-fit: cover;
+        }
+    }
+
+    &__load-more{
+        @include flex(center, center, row);
+        margin-top: 2rem;
+
+        a{
+            @include flex(center, center, row);
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--clr-text-gallery);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all .4s ease;
+
+            &:hover{
+                cursor: pointer;
+                border: 1px solid var(--clr-text-gallery-2);
+
+                i{
+                    color: var(--clr-text-gallery-2);
+                }
+            }
+
+            i{
+                transition: all .4s ease;
+                color: var(--clr-text-gallery);
+            }
+        }
+    }
+}
